@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="main/addComment.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=474822ec-179d-425f-aa57-d05f2de26055&lang=ru_RU" type="text/javascript">
+    </script>
+</head>
+<body>
+
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Тюмень</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="{% url 'admin' %}">Администрация</a>
+    <a class="p-2 text-dark" href="{% url 'citizens' %}">Жители</a>
+      <a class="p-2 text-dark" href="{% url 'addComment' %}">Добавить комментарий</a>
+  </nav>
+  <a class="btn btn-outline-primary" href="#">Войти</a>
+</div>
+<center><h1>Добавление комментария</h1></center>
+    <center>
+	<div id="map" style="width: 1200px; height: 600px"></div>
+</center>
+
+<script type="text/javascript">
+    // Функция ymaps.ready() будет вызвана, когда
+    // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+    ymaps.ready(init);
+    function init(){
+        // Создание карты.
+        var myMap = new ymaps.Map("map", {
+            // Координаты центра карты.
+            // Порядок по умолчанию: «широта, долгота».
+            // Чтобы не определять координаты центра карты вручную,
+            // воспользуйтесь инструментом Определение координат.
+            center: [57.15, 65.53],
+            // Уровень масштабирования. Допустимые значения:
+            // от 0 (весь мир) до 19.
+            zoom: 11
+        });
+    }
+</script>
+
+<aside id="column-left">
+	<div class="list">Список комментариев:</div>
+</aside>
+    <center>
+<aside id="column-right">
+  <div class="list">Добавить новый комментарий</div>
+  <div id="task">
+  	<form>
+  	<div>
+  		*Название<br>
+		<input type="text" class="task-element" id="name-task">
+	</div>
+	<div>
+		*Описание<br>
+		<input type="text" class="task-element" id="description-task">
+	</div>
+
+        <p></p>
+	<div>
+		<button id="button-element" onclick="typeTask()">Добавить комментарий</button>
+	</div>
+    </form>
+  </div>
+</aside>
+        </center>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</body>
+</html>
